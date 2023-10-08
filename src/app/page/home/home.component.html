@@ -38,8 +38,8 @@
                     <span class="font-semibold text-base">{{item.nombre}}</span>
                 </div>
                 <div class="flex flex-row justify-center items-center gap-3">
-                    <a mat-raised-button [href]="item.url" target="_blank"><i class="fa-regular fa-circle-down text-lg"></i></a>
-                    <button mat-raised-button (click)="dialogComfir(item)"><i class="fa-regular fa-trash-can text-lg"></i></button>
+                    <a mat-raised-button color="accent" [href]="item.url" target="_blank"><i class="fa-regular fa-circle-down text-lg"></i></a>
+                    <button mat-raised-button color="warn" (click)="dialogComfir(item)"><i class="fa-regular fa-trash-can text-lg"></i></button>
                 </div>
             </div>
         </div>
