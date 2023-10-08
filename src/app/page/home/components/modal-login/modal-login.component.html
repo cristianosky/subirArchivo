@@ -1,0 +1,28 @@
+<div class="flex justify-between items-center">
+    <h2 mat-dialog-title>Iniciar Sesión</h2>
+    <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="form">
+        <div class="flex-row justify-center items-center">
+            <mat-form-field appearance="fill" color="accent" class="w-full">
+                <mat-label>Correo o Usuario</mat-label>
+                <input matInput formControlName="email" placeholder="Example@gmail.com">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill" color="accent" class="w-full">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="pass" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="chageStatus()" [attr.aria-label]="'Ver Contraseña'">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="w-full flex justify-center">
+            <button mat-button (click)="login()" style="background-color: #EC4899; color: white;">Iniciar Sesión</button>
+        </div>
+    </form>
+</mat-dialog-content>

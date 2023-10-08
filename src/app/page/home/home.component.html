@@ -1,0 +1,47 @@
+<div class="px-3 flex flex-col gap-3">
+    <div class="flex flex-row justify-between items-center gap-4">
+        <mat-form-field appearance="fill" color="accent" class="w-full">
+            <mat-label>Buscar</mat-label>
+            <input matInput [formControl]="nombre" placeholder="Example@gmail.com">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button color="accent" (click)="showModalAdd()" style="margin-bottom: 24px;">
+            <div class="flex flex-row justify-center items-center">
+                <mat-icon>add</mat-icon>
+            </div>
+        </button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 h-24 gap-3">
+        <div *ngFor="let item of dataFilter" class="border-2 rounded-md w-full h-full grid grid-cols-4 p-2">
+            <div class="flex flex-row justify-center items-center border-r-2 h-full">
+                <div [ngSwitch]="item.tipo">
+                    <div *ngSwitchCase="'xlsx'">
+                        <i class="fa-regular fa-file-excel text-6xl"></i>
+                    </div>
+                    <div *ngSwitchCase="'docx'">
+                        <i class="fa-regular fa-file-word text-6xl"></i>
+                    </div>
+                    <div *ngSwitchCase="'pptx'">
+                        <i class="fa-regular fa-file-powerpoint text-6xl"></i>
+                    </div>
+                    <div *ngSwitchCase="'pdf'">
+                        <i class="fa-regular fa-file-pdf text-6xl"></i>
+                    </div>
+                    <div *ngSwitchDefault>
+                        <i class="fa-regular fa-file-circle-question text-6xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-3 flex flex-col gap-2 justify-center items-center">
+                <div>
+                    <span class="font-semibold text-base">{{item.nombre}}</span>
+                </div>
+                <div class="flex flex-row justify-center items-center gap-3">
+                    <a mat-raised-button [href]="item.url" target="_blank"><i class="fa-regular fa-circle-down text-lg"></i></a>
+                    <button mat-raised-button (click)="dialogComfir(item)"><i class="fa-regular fa-trash-can text-lg"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

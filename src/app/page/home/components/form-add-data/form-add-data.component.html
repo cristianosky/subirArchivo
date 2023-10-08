@@ -1,0 +1,24 @@
+<div class="flex justify-between items-center">
+  <h2 mat-dialog-title>Agregar Documento</h2>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="flex-col justify-center items-center">
+    <mat-form-field appearance="fill" color="accent" class="w-full">
+      <mat-label>Nombre del documetno</mat-label>
+      <input matInput [formControl]="nombre" placeholder="Documento example" />
+    </mat-form-field>
+
+    <div class="flex flex-row justify-center items-center">
+      <button mat-button color="accent" (click)="file.click()" [disabled]="nombre.invalid">
+        Subir archivo <mat-icon>upgrade</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<div style="display: none">
+  <input type="file" (change)="changeFile($event)" #file />
+</div>
