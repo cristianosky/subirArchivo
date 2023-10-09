@@ -21,7 +21,9 @@ import { ModalLoginComponent } from './page/home/components/modal-login/modal-lo
 import { FormAddDataComponent } from './page/home/components/form-add-data/form-add-data.component';
 import { AddUserComponent } from './page/home/components/add-user/add-user.component';
 import { ConfirmDeleteComponent } from './page/home/components/confirm-delete/confirm-delete.component';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { ViewDocumentComponent } from './page/view-document/view-document.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { ConfirmDeleteComponent } from './page/home/components/confirm-delete/co
     ModalLoginComponent,
     FormAddDataComponent,
     AddUserComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    ViewDocumentComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,8 @@ import { ConfirmDeleteComponent } from './page/home/components/confirm-delete/co
     FormsModule,
     ReactiveFormsModule,
     MatMenuModule,
+    MatTabsModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

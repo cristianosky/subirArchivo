@@ -1,9 +1,24 @@
 <div class="flex justify-between items-center">
-    <h2 mat-dialog-title>Agregar Usuario</h2>
+    <h2 mat-dialog-title>Actualizar Usuario</h2>
     <button mat-icon-button mat-dialog-close>
         <mat-icon>close</mat-icon>
     </button>
 </div>
 <mat-dialog-content class="mat-typography">
+    <form [formGroup]="form">
+        <div class="flex flex-col justify-center items-center gap-4">
+            <mat-form-field appearance="fill" color="accent" class="w-full">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre" placeholder="Cristian..." />
+            </mat-form-field>
     
+            <mat-form-field appearance="fill" color="accent" class="w-full">
+                <mat-label>Correo</mat-label>
+                <input matInput formControlName="email" placeholder="example@gmail.com" />
+            </mat-form-field>
+        </div>
+    </form>
+    <div class="flex flex-row justify-center items-center gap-4">
+        <button mat-raised-button color="accent" (click)="updateUser()">Actualizar</button>
+    </div>
 </mat-dialog-content>

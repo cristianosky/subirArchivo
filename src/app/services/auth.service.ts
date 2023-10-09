@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, authState} from '@angular/fire/auth'
+import { Auth, User, authState, getAuth, updateProfile} from '@angular/fire/auth'
 import { MatDialog } from '@angular/material/dialog';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, updateCurrentUser } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,20 @@ export class AuthService {
   async signOut(): Promise<void> {
     try {
       await this.auth.signOut();
+    } catch (error: unknown) {
+      console.log(error);
+    }
+  }
+
+  async uodateUser(userUpdate: User): Promise<void>{
+    try {
+      const auth = getAuth();
+      if(auth.currentUser){  
+        const user = await updateProfile(auth.currentUser, userUpdate)
+        this.dialog.closeAll()
+      }else{
+        throw 'error';
+      }
     } catch (error: unknown) {
       console.log(error);
     }

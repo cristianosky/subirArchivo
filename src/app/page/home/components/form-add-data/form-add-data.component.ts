@@ -20,6 +20,8 @@ export class FormAddDataComponent {
   fs: Firestore = inject(Firestore);
   fsStore: Storage = inject(Storage)
   private readonly authSvc = inject(AuthService);
+
+  
   constructor(private dialog: MatDialog){
     // this.addDocumento();
     this.authSvc.userState$.subscribe((response) => {

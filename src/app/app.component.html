@@ -1,6 +1,6 @@
 <nav class="relative flex flex-wrap items-center justify-between px-2 py-3 bg-pink-500 mb-3">
     <div class="px-4 flex flex-row items-center justify-between w-full">
-        <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
+        <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" [routerLink]="['/']">
             Tu App
         </a>
         <ng-container *ngIf="user$ | async as user; else noLogin">
@@ -8,15 +8,15 @@
             <button mat-button [matMenuTriggerFor]="menu">
               <div class="flex flex-row justify-center items-center gap-2 bg-white text-pink-500 rounded-md p-1">
                     <div>
-                        <mat-icon>perm_identity</mat-icon>
+                      <mat-icon>perm_identity</mat-icon>
                     </div>
                     <div>
-                        {{ user.email }}
+                      {{ user.displayName ? user.displayName : user.email }}
                     </div>
               </div>
             </button>
             <mat-menu #menu="matMenu">
-              <!-- <button mat-menu-item (click)="showModalAddUser()">Agregar Usuario </button> -->
+              <button mat-menu-item (click)="showModalAddUser()">Actualizar Usuario </button>
               <button mat-menu-item (click)="onSignOut()">Salir </button>
             </mat-menu>
           </ng-container>
@@ -29,7 +29,9 @@
     </ng-template>
 </nav>
 <ng-container *ngIf="user$ | async; else NoLogin">
-  <router-outlet></router-outlet>
+  <div class="px-3 ">
+    <router-outlet></router-outlet>
+  </div>
 </ng-container>
 
 <ng-template #NoLogin>

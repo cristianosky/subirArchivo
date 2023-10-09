@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalLoginComponent } from './page/home/components/modal-login/modal-login.component';
@@ -33,8 +33,12 @@ export class AppComponent {
   }
 
   showModalAddUser(){
-    this.dialog.open(AddUserComponent, {
-      width: '300px'
+    // let user: any
+    this.user$.pipe(take(1)).subscribe((resp) =>{
+      this.dialog.open(AddUserComponent, {
+        width: '300px',
+        data: resp
+      })
     })
   }
 }

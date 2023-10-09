@@ -1,4 +1,4 @@
-<div class="px-3 flex flex-col gap-3">
+<div class="flex flex-col gap-3">
     <div class="flex flex-row justify-between items-center gap-4">
         <mat-form-field appearance="fill" color="accent" class="w-full">
             <mat-label>Buscar</mat-label>
@@ -38,8 +38,22 @@
                     <span class="font-semibold text-base">{{item.nombre}}</span>
                 </div>
                 <div class="flex flex-row justify-center items-center gap-3">
-                    <a mat-raised-button color="accent" [href]="item.url" target="_blank"><i class="fa-regular fa-circle-down text-lg"></i></a>
-                    <button mat-raised-button color="warn" (click)="dialogComfir(item)"><i class="fa-regular fa-trash-can text-lg"></i></button>
+                    <!-- <a mat-raised-button *ngIf="item.tipo == 'pdf'" color="primary" [routerLink]="['/verdoc/', item.url]">
+                        <i class="fa-regular fa-eye"></i>
+                    </a> -->
+
+                    <a mat-raised-button color="accent" [href]="item.url" target="_blank">
+                        <ng-container *ngIf="item.tipo == 'pdf'; else noPdf">
+                            <i class="fa-regular fa-eye"></i>
+                        </ng-container>
+                        <ng-template #noPdf>
+                            <i class="fa-regular fa-circle-down text-lg"></i>
+                        </ng-template>
+                    </a>
+
+                    <button mat-raised-button color="warn" (click)="dialogComfir(item)">
+                        <i class="fa-regular fa-trash-can text-lg"></i>
+                    </button>
                 </div>
             </div>
         </div>
